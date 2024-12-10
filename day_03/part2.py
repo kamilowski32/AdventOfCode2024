@@ -17,11 +17,9 @@ with open("input.txt") as file:
     sum += parse_string(start)
 
 
-    regex2 = r"do\(\)(.*)don't\(\)"
-    rest = re.split(regex2, file)
-    print(rest)
+    regex2 = re.compile("(?P<all>do[^n][^d]*)")
+    matches = [m.groupdict() for m in regex2.finditer(file)]
+    rest = re.findall(regex2, file)
     sum += parse_string(rest)
 
 print(sum)
-# 184511516
-# 188721451
